@@ -28,6 +28,11 @@ public class birdScript : MonoBehaviour
             logic.loadMenu();
             birdIsAlive = false;
         }
+
+        else if (Input.GetKeyDown(KeyCode.R) && birdIsAlive)
+        {
+            logic.restartGame();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
