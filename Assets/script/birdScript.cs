@@ -22,6 +22,12 @@ public class birdScript : MonoBehaviour
         {
             myRigidbody.velocity = Vector2.up * flapStrength;
         }
+
+        else if (Input.GetKeyDown(KeyCode.Semicolon) && birdIsAlive)
+        {
+            logic.loadMenu();
+            birdIsAlive = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
