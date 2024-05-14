@@ -26,4 +26,9 @@ public class logicScript : MonoBehaviour
     {
         gameOverScreen.SetActive(true);
     }
+
+    public void loadMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
