@@ -15,6 +15,11 @@ public class logicScript : MonoBehaviour
     {
         playerScore = playerScore + ScoreToAdd;
         scoreText.text = playerScore.ToString();
+
+        if (playerScore >= 2)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     public void restartGame()
