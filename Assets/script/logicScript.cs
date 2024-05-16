@@ -9,6 +9,7 @@ public class logicScript : MonoBehaviour
     public int playerScore;
     public Text scoreText;
     public GameObject gameOverScreen;
+    public GameObject pauseMenuScreen;
 
     [ContextMenu("Augmenter le score")]
     public void addScore(int ScoreToAdd)
@@ -35,5 +36,15 @@ public class logicScript : MonoBehaviour
     public void loadMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void pauseMenu()
+    {
+        pauseMenuScreen.SetActive(true);
+    }
+
+    public void pauseMenuOff()
+    {
+        pauseMenuScreen.SetActive(false);
     }
 }

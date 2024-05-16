@@ -18,14 +18,17 @@ public class pipeSpawnScript : MonoBehaviour
 
     void Update()
     {
-        if (timer < spawnRate)
+        if (!logic.pauseMenuScreen.activeSelf)
         {
-            timer = timer  + Time.deltaTime;
-        }
-        else
-        {
-            spawnPipe();
-            timer = 0;
+            if (timer < spawnRate)
+            {
+                timer = timer + Time.deltaTime;
+            }
+            else
+            {
+                spawnPipe();
+                timer = 0;
+            }
         }
     }
 
@@ -36,7 +39,7 @@ public class pipeSpawnScript : MonoBehaviour
 
         Instantiate(pipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
 
-        if (logic.playerScore >= 10 && Random.Range(0, 5) == 0)
+        if (logic.playerScore >= 5 && Random.Range(0, 3) == 0)
         {
             float randomY = Random.Range(lowestPoint, highestPoint);
 

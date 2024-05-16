@@ -20,21 +20,37 @@ public class birdScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
+        if (!logic.pauseMenuScreen.activeSelf)
         {
-            myRigidbody.velocity = Vector2.up * flapStrength;
+            if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
+            {
+                myRigidbody.velocity = Vector2.up * flapStrength;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.Semicolon) && birdIsAlive)
+            {
+                logic.loadMenu();
+                birdIsAlive = false;
+            }
+
+            else if (Input.GetKeyDown(KeyCode.R) && birdIsAlive)
+            {
+                logic.restartGame();
+            }
+
+            else if (Input.GetKeyDown(KeyCode.P) && birdIsAlive)
+            {
+                logic.pauseMenu();
+            }
+
+            myRigidbody.gravityScale = 4.5f;
+        }
+        else
+        {
+            myRigidbody.velocity = Vector2.zero;
+            myRigidbody.gravityScale = 0f;
         }
 
-        else if (Input.GetKeyDown(KeyCode.Semicolon) && birdIsAlive)
-        {
-            logic.loadMenu();
-            birdIsAlive = false;
-        }
-
-        else if (Input.GetKeyDown(KeyCode.R) && birdIsAlive)
-        {
-            logic.restartGame();
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
