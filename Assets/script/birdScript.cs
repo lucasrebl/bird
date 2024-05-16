@@ -8,14 +8,16 @@ public class birdScript : MonoBehaviour
     public float flapStrength;
     public logicScript logic;
     public bool birdIsAlive = true;
-
+    public int Life = 3;
+    public DisplayLife displayLife;
 
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<logicScript>();
+        displayLife = FindObjectOfType<DisplayLife>();
+        UpdateLifeText();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
@@ -37,7 +39,29 @@ public class birdScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        logic.gameOver();
-        birdIsAlive = false;
+        if (collision.gameObject.CompareTag("Monster") && birdIsAlive)
+        {
+            Life--;
+            Debug.Log(Life);
+            if (Life <= 0)
+            {
+                logic.gameOver();
+                birdIsAlive = false;
+            }
+            UpdateLifeText();
+        }
+        else
+        {
+            logic.gameOver();
+            birdIsAlive = false;
+        }
+    }
+
+    void UpdateLifeText()
+    {
+        if (displayLife != null)
+        {
+            displayLife.UpdateLifeText(Life);
+        }
     }
 }

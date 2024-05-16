@@ -16,7 +16,7 @@ public class logicScript : MonoBehaviour
         playerScore = playerScore + ScoreToAdd;
         scoreText.text = playerScore.ToString();
 
-        if (playerScore >= 2)
+        if (playerScore >= 100)
         {
             SceneManager.LoadScene(2);
         }
