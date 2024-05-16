@@ -64,4 +64,9 @@ public class birdScript : MonoBehaviour
             displayLife.UpdateLifeText(Life);
         }
     }
+
+    private void FixedUpdate()
+    {
+        myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
 }
