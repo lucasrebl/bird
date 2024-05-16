@@ -42,13 +42,13 @@ public class birdScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Monster") && birdIsAlive)
         {
             Life--;
-            Debug.Log(Life);
-            if (Life <= 0)
+            if (Life < 0)
             {
                 logic.gameOver();
                 birdIsAlive = false;
             }
             UpdateLifeText();
+            Destroy(collision.gameObject);
         }
         else
         {
