@@ -5,11 +5,14 @@ using UnityEngine;
 public class pipeSpawnScript : MonoBehaviour
 {
     public GameObject pipe;
+    public GameObject monster;
     public float spawnRate = 5;
     public float timer = 0;
     public float heightOffset = 10;
+    public logicScript logic;
     void Start()
     {
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<logicScript>();
         spawnPipe();
     }
 
@@ -32,5 +35,12 @@ public class pipeSpawnScript : MonoBehaviour
         float highestPoint = transform.position.y + heightOffset;
 
         Instantiate(pipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
+
+        if (logic.playerScore >= 10 && Random.Range(0, 5) == 0)
+        {
+            float randomY = Random.Range(lowestPoint, highestPoint);
+
+            Instantiate(monster, new Vector3(transform.position.x, randomY + 1f, 0), transform.rotation);
+        }
     }
 }
