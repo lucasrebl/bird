@@ -662,6 +662,8 @@ MonoBehaviour:
   birdIsAlive: 1
   Life: 3
   displayLife: {fileID: 0}
+  projectilePrefab: {fileID: 8775669784377619104, guid: f7167685d5864874db42f32fb8aa9d39, type: 3}
+  shootForce: 50
 --- !u!1 &767403388
 GameObject:
   m_ObjectHideFlags: 0

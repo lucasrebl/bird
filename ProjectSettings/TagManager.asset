@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Logic
   - Monster
+  - arrow
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - bird
   - Water
   - UI
-  - 
+  - arrow
   - 
   - 
   - 

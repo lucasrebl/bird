@@ -11,6 +11,9 @@ public class birdScript : MonoBehaviour
     public int Life = 3;
     public DisplayLife displayLife;
 
+    public GameObject projectilePrefab;
+    public float shootForce = 50f;
+
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<logicScript>();
@@ -26,21 +29,23 @@ public class birdScript : MonoBehaviour
             {
                 myRigidbody.velocity = Vector2.up * flapStrength;
             }
-
             else if (Input.GetKeyDown(KeyCode.Semicolon) && birdIsAlive)
             {
                 logic.loadMenu();
                 birdIsAlive = false;
             }
-
             else if (Input.GetKeyDown(KeyCode.R) && birdIsAlive)
             {
                 logic.restartGame();
             }
-
             else if (Input.GetKeyDown(KeyCode.P) && birdIsAlive)
             {
                 logic.pauseMenu();
+            }
+
+            if (Input.GetMouseButtonDown(0) && birdIsAlive)
+            {
+                ShootProjectile();
             }
 
             myRigidbody.gravityScale = 4.5f;
@@ -50,11 +55,16 @@ public class birdScript : MonoBehaviour
             myRigidbody.velocity = Vector2.zero;
             myRigidbody.gravityScale = 0f;
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Ignore collisions with arrows
+        if (collision.gameObject.CompareTag("Arrow"))
+        {
+            return;
+        }
+
         if (collision.gameObject.CompareTag("Monster") && birdIsAlive)
         {
             Life--;
@@ -84,5 +94,18 @@ public class birdScript : MonoBehaviour
     private void FixedUpdate()
     {
         myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    void ShootProjectile()
+    {
+        if (projectilePrefab != null)
+        {
+            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.AddForce(transform.right * shootForce, ForceMode2D.Impulse);
+            }
+        }
     }
 }
