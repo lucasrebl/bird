@@ -39,7 +39,7 @@ public class pipeSpawnScript : MonoBehaviour
 
         Instantiate(pipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
 
-        if (logic.playerScore >= 2 && Random.Range(0, 2) == 0)
+        if (logic.playerScore >= 1 && Random.Range(0, 3) != 0)
         {
             float randomY = Random.Range(lowestPoint, highestPoint);
 
