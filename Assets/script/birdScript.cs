@@ -14,6 +14,8 @@ public class birdScript : MonoBehaviour
     public GameObject projectilePrefab;
     public float shootForce = 50f;
 
+    public AudioSource flapSound;
+
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<logicScript>();
@@ -28,6 +30,11 @@ public class birdScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
             {
                 myRigidbody.velocity = Vector2.up * flapStrength;
+
+                if (flapSound != null)
+                {
+                    flapSound.Play();
+                }
             }
             else if (Input.GetKeyDown(KeyCode.Semicolon) && birdIsAlive)
             {
@@ -59,8 +66,7 @@ public class birdScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Ignore collisions with arrows
-        if (collision.gameObject.CompareTag("Arrow"))
+        if (collision.gameObject.CompareTag("arrow"))
         {
             return;
         }

@@ -6,15 +6,10 @@ using UnityEngine;
 public class pipeMiddleScript : MonoBehaviour
 {
     public logicScript logic;
+    public AudioSource scoreSound;
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<logicScript>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,6 +17,10 @@ public class pipeMiddleScript : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             logic.addScore(1);
+            if (scoreSound != null)
+            {
+                scoreSound.Play();
+            }
         }
     }
 }

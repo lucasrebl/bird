@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     public logicScript logic;
+    public AudioSource hitSound;
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Monster"))
@@ -15,6 +16,11 @@ public class ProjectileScript : MonoBehaviour
             if (logic != null)
             {
                 logic.addScore(2);
+            }
+
+            if (hitSound != null) 
+            {
+                hitSound.Play();
             }
 
             Destroy(gameObject);
