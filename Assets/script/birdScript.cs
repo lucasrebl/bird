@@ -14,13 +14,13 @@ public class birdScript : MonoBehaviour
     public GameObject projectilePrefab;
     public float shootForce = 50f;
 
-    public AudioSource flapSound;
-
+    private AudioSource[] audioSources;
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<logicScript>();
         displayLife = FindObjectOfType<DisplayLife>();
         UpdateLifeText();
+        audioSources = GetComponents<AudioSource>();
     }
 
     void Update()
@@ -31,10 +31,7 @@ public class birdScript : MonoBehaviour
             {
                 myRigidbody.velocity = Vector2.up * flapStrength;
 
-                if (flapSound != null)
-                {
-                    flapSound.Play();
-                }
+                audioSources[0].Play();
             }
             else if (Input.GetKeyDown(KeyCode.Semicolon) && birdIsAlive)
             {
@@ -74,6 +71,7 @@ public class birdScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Monster") && birdIsAlive)
         {
             Life--;
+            audioSources[1].Play();
             if (Life < 0)
             {
                 logic.gameOver();
@@ -88,6 +86,7 @@ public class birdScript : MonoBehaviour
         }
         else
         {
+            audioSources[2].Play();
             logic.gameOver();
             birdIsAlive = false;
         }

@@ -8,6 +8,11 @@ public class ProjectileScript : MonoBehaviour
     public AudioSource hitSound;
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (hitSound != null)
+        {
+            hitSound.Play();
+        }
+
         if (collision.gameObject.CompareTag("Monster"))
         {
             Destroy(collision.gameObject);
@@ -17,12 +22,6 @@ public class ProjectileScript : MonoBehaviour
             {
                 logic.addScore(2);
             }
-
-            if (hitSound != null) 
-            {
-                hitSound.Play();
-            }
-
             Destroy(gameObject);
         }
     }
