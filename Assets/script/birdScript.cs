@@ -120,8 +120,8 @@ public class birdScript : MonoBehaviour
 
     IEnumerator ShowLifeLooseScreen()
     {
-        logic.lifeLoose(); // Affiche l'écran de perte de vie
-        yield return new WaitForSeconds(1f); // Attend 5 secondes
-        logic.lifeLooseScreen.SetActive(false); // Désactive l'écran de perte de vie après 5 secondes
+        logic.lifeLoose();
+        yield return new WaitForSeconds(1f);
+        logic.lifeLooseScreen.SetActive(false);
     }
 }

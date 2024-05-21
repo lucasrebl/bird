@@ -12,7 +12,6 @@ public class logicScript : MonoBehaviour
     public GameObject pauseMenuScreen;
     public GameObject lifeLooseScreen;
     public GameObject scroreIncreaseScreen;
-    public GameObject killMonsterScreen;
 
     [ContextMenu("Augmenter le score")]
     public void addScore(int ScoreToAdd)
@@ -59,10 +58,5 @@ public class logicScript : MonoBehaviour
     public void scroreIncrease()
     {
         scroreIncreaseScreen.SetActive(true);
-    }
-
-    public void killMonster()
-    {
-        killMonsterScreen.SetActive(true);
     }
 }

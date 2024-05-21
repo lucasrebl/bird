@@ -29,18 +29,9 @@ public class ProjectileScript : MonoBehaviour
             if (logic != null)
             {
                 logic.addScore(2);
-                StartCoroutine(ShowsKillMonsterScreen());
 
             }
         }
-    }
-
-    IEnumerator ShowsKillMonsterScreen()
-    {
-        logic.killMonster();
-        yield return new WaitForSeconds(1f);
-        logic.killMonsterScreen.SetActive(false);
-        Destroy(gameObject);
     }
 
     IEnumerator DestroyAfterDelay()
