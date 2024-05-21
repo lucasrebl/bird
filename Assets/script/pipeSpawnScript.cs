@@ -37,13 +37,22 @@ public class pipeSpawnScript : MonoBehaviour
         float lowestPoint = transform.position.y - heightOffset;
         float highestPoint = transform.position.y + heightOffset;
 
-        Instantiate(pipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
+        Vector3 pipePosition = new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0);
 
-        if (logic.playerScore >= 1 && Random.Range(0, 3) != 0)
+        GameObject newPipe = Instantiate(pipe, pipePosition, transform.rotation);
+
+        if (logic.playerScore > 1)
         {
-            float randomY = Random.Range(lowestPoint, highestPoint);
-
-            Instantiate(monster, new Vector3(transform.position.x, randomY + 1f, 0), transform.rotation);
+            spawnMonster(newPipe);
         }
+    }
+
+    void spawnMonster(GameObject pipe)
+    {
+        float monsterMinY = pipe.transform.position.y - heightOffset / 2;
+        float monsterMaxY = pipe.transform.position.y + heightOffset / 2;
+        Vector3 monsterPosition = new Vector3(pipe.transform.position.x, Random.Range(monsterMinY, monsterMaxY), 0);
+
+        Instantiate(monster, monsterPosition, Quaternion.identity, pipe.transform);
     }
 }

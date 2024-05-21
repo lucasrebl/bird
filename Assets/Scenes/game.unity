@@ -363,7 +363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 408763044}
   m_Layer: 5
-  m_Name: scoreIncreseKillMonster
+  m_Name: killMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1414,7 +1414,7 @@ MonoBehaviour:
   pauseMenuScreen: {fileID: 1356779248}
   lifeLooseScreen: {fileID: 228607704}
   scroreIncreaseScreen: {fileID: 171602722}
-  scroreIncreaseKillMonsterScreen: {fileID: 408763043}
+  killMonsterScreen: {fileID: 408763043}
 --- !u!4 &918003901
 Transform:
   m_ObjectHideFlags: 0
