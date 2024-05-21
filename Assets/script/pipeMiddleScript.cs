@@ -17,10 +17,18 @@ public class pipeMiddleScript : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             logic.addScore(1);
+            StartCoroutine(ShowsScoreAddScreen());
             if (scoreSound != null)
             {
                 scoreSound.Play();
             }
         }
+    }
+
+    IEnumerator ShowsScoreAddScreen()
+    {
+        logic.scroreIncrease();
+        yield return new WaitForSeconds(1f);
+        logic.scroreIncreaseScreen.SetActive(false);
     }
 }

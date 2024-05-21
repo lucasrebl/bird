@@ -6,6 +6,11 @@ public class ProjectileScript : MonoBehaviour
 {
     public logicScript logic;
     public AudioSource hitSound;
+
+    private void Start()
+    {
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<logicScript>();
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (hitSound != null)
@@ -17,12 +22,19 @@ public class ProjectileScript : MonoBehaviour
         {
             Destroy(collision.gameObject);
 
-            logicScript logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<logicScript>();
             if (logic != null)
             {
                 logic.addScore(2);
+                StartCoroutine(ShowsScoreAddKillMonsterScreen());
             }
             Destroy(gameObject);
         }
     }
+    IEnumerator ShowsScoreAddKillMonsterScreen()
+    {
+        logic.scroreIncreaseKillMonster();
+        yield return new WaitForSeconds(1f);
+        logic.scroreIncreaseKillMonsterScreen.SetActive(false);
+    }
+
 }
