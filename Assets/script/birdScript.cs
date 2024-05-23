@@ -89,12 +89,16 @@ public class birdScript : MonoBehaviour
             }
             UpdateLifeText();
             Destroy(collision.gameObject);
+
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         }
         else if (collision.gameObject.CompareTag("Heart") && birdIsAlive)
         {
             Life++;
             UpdateLifeText();
             Destroy(collision.gameObject);
+
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
         }
         else
         {
