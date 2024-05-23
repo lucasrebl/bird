@@ -15,7 +15,7 @@ public class monsterMove : MonoBehaviour
 
     void Update()
     {
-        if (!logic.pauseMenuScreen.activeSelf)
+        if (!logic.pauseMenuScreen.activeSelf && !logic.gameOverScreen.activeSelf)
         {
             AdjustMoveSpeed();
 

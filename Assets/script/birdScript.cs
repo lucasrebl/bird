@@ -52,6 +52,12 @@ public class birdScript : MonoBehaviour
                 ShootProjectile();
             }
 
+            if (transform.position.y > 35f || transform.position.y < -35f)
+            {
+                logic.gameOver();
+                birdIsAlive = false;
+            }
+
             myRigidbody.gravityScale = 4.5f;
         }
         else

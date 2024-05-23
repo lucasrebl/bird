@@ -15,7 +15,7 @@ public class pipeMoveScript : MonoBehaviour
 
     void Update()
     {
-        if (!logic.pauseMenuScreen.activeSelf)
+        if (!logic.pauseMenuScreen.activeSelf && !logic.gameOverScreen.activeSelf)
         {
             transform.position = transform.position + (Vector3.left * moveSpeed) * Time.deltaTime;
 
