@@ -29,7 +29,7 @@ public class ProjectileScript : MonoBehaviour
             if (logic != null)
             {
                 logic.addScore(2);
-
+                logic.incrementMonsterKillCount();
             }
         }
     }

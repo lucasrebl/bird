@@ -13,6 +13,15 @@ public class logicScript : MonoBehaviour
     public GameObject lifeLooseScreen;
     public GameObject scroreIncreaseScreen;
 
+    public int monsterKillCount = 0;
+    public DisplayMonsterKillCount displayMonsterKillCount;
+
+    private void Start()
+    {
+        displayMonsterKillCount = FindObjectOfType<DisplayMonsterKillCount>();
+        UpdateMonsterKillCountDisplay();
+    }
+
     [ContextMenu("Augmenter le score")]
     public void addScore(int ScoreToAdd)
     {
@@ -21,7 +30,28 @@ public class logicScript : MonoBehaviour
 
         if (playerScore >= 40)
         {
-            SceneManager.LoadScene(2);
+            if (monsterKillCount == 0)
+            {
+                SceneManager.LoadScene(3);
+            }
+            else
+            {
+                SceneManager.LoadScene(2);
+            }
+        }
+    }
+
+    public void incrementMonsterKillCount()
+    {
+        monsterKillCount++;
+        UpdateMonsterKillCountDisplay();
+    }
+
+    void UpdateMonsterKillCountDisplay()
+    {
+        if (displayMonsterKillCount != null)
+        {
+            displayMonsterKillCount.UpdateMonsterKillText(monsterKillCount);
         }
     }
 
