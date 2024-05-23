@@ -1588,6 +1588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pipe: {fileID: 3952776042545317557, guid: 34cd62f83644dd44fb13523870178e37, type: 3}
   monster: {fileID: 2364008871394665373, guid: f2a16b3495ef5274c887f1a24541afd4, type: 3}
+  heart: {fileID: 1942547850633530184, guid: 8ff3ad37ff76b9046a765a56c89cf619, type: 3}
   spawnRate: 5
   timer: 0
   heightOffset: 10

@@ -32,6 +32,10 @@ public class ProjectileScript : MonoBehaviour
                 logic.incrementMonsterKillCount();
             }
         }
+        else if (collision.gameObject.CompareTag("Heart"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator DestroyAfterDelay()

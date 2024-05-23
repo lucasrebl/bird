@@ -180,7 +180,6 @@ MonoBehaviour:
   moveSpeed: 5
   deathZone: -45
   logic: {fileID: 0}
-  monster: {fileID: 2364008871394665373, guid: f2a16b3495ef5274c887f1a24541afd4, type: 3}
 --- !u!1 &4798554324895032686
 GameObject:
   m_ObjectHideFlags: 0

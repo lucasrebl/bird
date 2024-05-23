@@ -6,6 +6,7 @@ public class pipeSpawnScript : MonoBehaviour
 {
     public GameObject pipe;
     public GameObject monster;
+    public GameObject heart;
     public float spawnRate = 5;
     public float timer = 0;
     public float heightOffset = 10;
@@ -45,6 +46,10 @@ public class pipeSpawnScript : MonoBehaviour
         {
             spawnMonster(newPipe);
         }
+        else if (Random.Range(0, 5) < 4)
+        {
+            spawnHeart(newPipe);
+        }
     }
 
     void spawnMonster(GameObject pipe)
@@ -53,6 +58,35 @@ public class pipeSpawnScript : MonoBehaviour
         float monsterMaxY = pipe.transform.position.y + heightOffset / 2;
         Vector3 monsterPosition = new Vector3(pipe.transform.position.x, Random.Range(monsterMinY, monsterMaxY), 0);
 
-        Instantiate(monster, monsterPosition, Quaternion.identity, pipe.transform);
+        if (!isPositionOccupied(monsterPosition))
+        {
+            Instantiate(monster, monsterPosition, Quaternion.identity, pipe.transform);
+        }
+    }
+
+    void spawnHeart(GameObject pipe)
+    {
+        float heartMinY = pipe.transform.position.y - heightOffset / 2;
+        float heartMaxY = pipe.transform.position.y + heightOffset / 2;
+        Vector3 heartPosition = new Vector3(pipe.transform.position.x, Random.Range(heartMinY, heartMaxY), 0);
+
+        if (!isPositionOccupied(heartPosition))
+        {
+            Instantiate(heart, heartPosition, Quaternion.identity, pipe.transform);
+        }
+    }
+
+    bool isPositionOccupied(Vector3 position)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.1f);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Monster") || collider.CompareTag("Heart"))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

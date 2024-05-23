@@ -84,6 +84,12 @@ public class birdScript : MonoBehaviour
             UpdateLifeText();
             Destroy(collision.gameObject);
         }
+        else if (collision.gameObject.CompareTag("Heart") && birdIsAlive)
+        {
+            Life++;
+            UpdateLifeText();
+            Destroy(collision.gameObject);
+        }
         else
         {
             audioSources[2].Play();
