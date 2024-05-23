@@ -41,7 +41,7 @@ public class pipeSpawnScript : MonoBehaviour
 
         GameObject newPipe = Instantiate(pipe, pipePosition, transform.rotation);
 
-        if (logic.playerScore > 1)
+        if (logic.playerScore > 1 && Random.Range(0, 3) < 2)
         {
             spawnMonster(newPipe);
         }
