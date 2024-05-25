@@ -37,9 +37,8 @@ Au niveau des polish nous avons:
 # Lancer le .exe
 
   - Première étape: télécharger le dossier birdBuild.zip:
-    ```bash
+    
     https://github.com/lucasrebl/bird/releases
-    ```
 
   - Deuxième étape: Dézipper le dossier
 
